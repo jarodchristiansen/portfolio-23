@@ -212,9 +212,9 @@ export default function Home() {
               development for national as well as local SEO campaigns, WCAG 2.2
               accessibility implementation, and responsive data analysis /
               visualization, my skillset lends itself to many areas of software
-              engineering. I am passionate designing and creating captivating
-              responsive user experiences as I believe they are the backbone of
-              any well-designed application.
+              engineering. I am passionate about designing and Engineering
+              captivating responsive user experiences as I believe they are the
+              backbone of any well-designed application.
             </span>
           </motion.div>
         </div>
