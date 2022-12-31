@@ -204,7 +204,7 @@ export default function Home() {
               Solidity. The primary libraries/frameworks I have experience with
               are React, NextJS, Apollo (GraphQL), Node, and Express. I am also
               familiar with Remix, Hardhat, Ganache, Truffle, and Open Zeppelin
-              for smart contract (web3) development
+              for smart contract (web3) development.
             </span>
 
             <span>
