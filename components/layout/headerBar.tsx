@@ -1,20 +1,22 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 const HeaderBar = () => {
   return (
     <HeaderContainer>
       <Link href="/">Home</Link>
-      {/* <Link href="/contact">Contact</Link>
-      <Link href="/designs">Designs</Link> */}
     </HeaderContainer>
   );
 };
 
 const HeaderContainer = styled.div`
   display: flex;
+  flex-direction: row;
+  width: 100%;
   gap: 1.2rem;
   padding: 1.2rem;
+  border-bottom: 1px solid lightgray;
 
   a {
     color: black;

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { MediaQueries } from "../styles/MediaQueries";
 import { useMemo, useRef } from "react";
 import bg from "../public/svgs/wavy-banner.svg";
-import { motion, useViewportScrol } from "framer-motion";
+import { motion } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa";
 
 export default function Home() {
@@ -74,7 +74,7 @@ export default function Home() {
 
     return projects.map((project, idx) => {
       return (
-        <RowContainer>
+        <RowContainer key={project.details}>
           <motion.div
             initial={{ opacity: 0, scale: 1, x: -25 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -114,7 +114,7 @@ export default function Home() {
                 src={project.imageSource}
                 height={350}
                 width={400}
-                alt="block-logo"
+                alt={project.title + "Image source"}
                 layout="responsive"
                 unoptimized={true}
               />
@@ -167,7 +167,14 @@ export default function Home() {
       </IntroBanner>
 
       <AboutMeContainer ref={projectsRef}>
-        <h2>About Me</h2>
+        <motion.div
+          initial={{ opacity: 0, scale: 1, y: 25 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 2 }}
+          className="image-container"
+        >
+          <h2>About Me</h2>
+        </motion.div>
         <div className="top-text-row">
           <motion.div
             initial={{ opacity: 0, scale: 1, y: 25 }}
@@ -180,6 +187,7 @@ export default function Home() {
               layout="fill"
               className={"image"}
               unoptimized={true}
+              alt={"Jarod Christiansen profile image"}
             />
           </motion.div>
           <motion.div
@@ -212,10 +220,17 @@ export default function Home() {
         </div>
       </AboutMeContainer>
 
-      <div className="project-container">
-        <h2>Projects</h2>
-        {ProjectBlocks}
-      </div>
+      <motion.div
+        initial={{ opacity: 0, scale: 1, y: 25 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 2 }}
+        className="image-container"
+      >
+        <div className="project-container">
+          <h2>Projects</h2>
+          {ProjectBlocks}
+        </div>
+      </motion.div>
 
       <motion.div
         animate={{
