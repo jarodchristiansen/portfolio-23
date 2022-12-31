@@ -1,10 +1,12 @@
 import Head from "next/head";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 import { MediaQueries } from "../styles/MediaQueries";
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import bg from "../public/svgs/wavy-banner.svg";
+import { motion, useViewportScrol } from "framer-motion";
+import { FaArrowUp } from "react-icons/fa";
 
 export default function Home() {
   const ProjectBlocks = useMemo(() => {
@@ -73,7 +75,12 @@ export default function Home() {
     return projects.map((project, idx) => {
       return (
         <RowContainer>
-          <div className="change-container">
+          <motion.div
+            initial={{ opacity: 0, scale: 1, x: -25 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 2, staggerChildren: true }}
+            className="change-container"
+          >
             <Block>
               <div className="block-text-column">
                 <h3>{project.title}</h3>
@@ -116,13 +123,22 @@ export default function Home() {
                 <span>{project.platform}</span>
               </HoverDiv>
             </ImageBlock>
-          </div>
+          </motion.div>
         </RowContainer>
       );
     });
   }, []);
 
-  console.log({ bg });
+  const topRef = useRef(null);
+  const projectsRef = useRef(null);
+
+  const scrollToProjects = () => {
+    projectsRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToTop = () => {
+    topRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <PageContainer>
@@ -131,18 +147,47 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <AboutMeContainer>
+      <IntroBanner ref={topRef}>
+        <motion.div
+          initial={{ opacity: 0, scale: 1, x: -25 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 2, staggerChildren: true }}
+          className="text-container"
+        >
+          <h2>
+            <span>
+              Hi, My name is
+              <span className="name-text">Jarod Christiansen</span> <br />
+              I'm a Software Engineer
+            </span>
+          </h2>
+
+          <button onClick={() => scrollToProjects()}>Learn More</button>
+        </motion.div>
+      </IntroBanner>
+
+      <AboutMeContainer ref={projectsRef}>
         <h2>About Me</h2>
         <div className="top-text-row">
-          <div className="image-container">
+          <motion.div
+            initial={{ opacity: 0, scale: 1, y: 25 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 2 }}
+            className="image-container"
+          >
             <Image
               src={"/images/profile (2).jpg"}
               layout="fill"
               className={"image"}
               unoptimized={true}
             />
-          </div>
-          <div className="text-column">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 1, x: -25 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 2, staggerChildren: true }}
+            className="text-column"
+          >
             <span>
               My name is Jarod Christiansen, I am a Software Engineer with years
               of experience in Software Engineering specializing in user
@@ -163,7 +208,7 @@ export default function Home() {
               responsive user experiences as I believe they are the backbone of
               any well-designed application.
             </span>
-          </div>
+          </motion.div>
         </div>
       </AboutMeContainer>
 
@@ -171,9 +216,87 @@ export default function Home() {
         <h2>Projects</h2>
         {ProjectBlocks}
       </div>
+
+      <motion.div
+        animate={{
+          y: ["50%", "0%", "-50%", "0%", "50%", "0%", "-50%", "0%"],
+        }}
+        transition={{
+          y: {
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+        }}
+        className={"up-arrow"}
+      >
+        <FaArrowUp size={36} className="arrow" onClick={() => scrollToTop()} />
+      </motion.div>
     </PageContainer>
   );
 }
+
+const IntroBanner = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  height: 80vh;
+  text-align: center;
+
+  @media ${MediaQueries.MD} {
+    text-align: left;
+  }
+
+  .text-container {
+    margin: auto;
+    font-size: 2rem;
+
+    h2 {
+      line-height: 5rem;
+
+      @media ${MediaQueries.MD} {
+        line-height: 3.5rem;
+      }
+
+      .name-text {
+        padding: 1rem;
+        color: rgb(27, 185, 194);
+      }
+    }
+  }
+
+  button {
+    background-color: white;
+    border: 2px solid rgb(27, 185, 194);
+    color: rgb(27, 185, 194);
+    width: fit-content;
+    padding: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    font-weight: 900;
+    border-radius: 5px;
+
+    :hover:enabled {
+      color: white;
+      text-decoration: underline;
+      cursor: pointer;
+
+      background: rgb(27, 185, 194);
+      background: linear-gradient(
+        131deg,
+        rgba(27, 185, 194, 1) 0%,
+        rgba(27, 194, 181, 1) 48%,
+        rgba(27, 194, 173, 1) 100%
+      );
+
+      -webkit-transition: background 1s ease-out;
+      -moz-transition: background 1s ease-out;
+      -o-transition: background 1s ease-out;
+      transition: background 1s ease-out;
+    }
+  }
+`;
 
 const HoverDiv = styled.div`
   position: absolute;
@@ -221,6 +344,12 @@ const PageContainer = styled.div`
   padding: 2rem 0;
   text-align: center;
 
+  .up-arrow {
+    .arrow {
+      cursor: pointer;
+    }
+  }
+
   .project-container {
     display: flex;
     flex-direction: column;
@@ -253,14 +382,11 @@ const AboutMeContainer = styled.div`
   -webkit-clip-path: unset;
   clip-path: unset;
 
-  @media ${MediaQueries.MD} {
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 56%, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
-  }
-
   h2 {
     font-weight: bold;
     font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
   }
 
   .top-text-row {
@@ -299,7 +425,7 @@ const AboutMeContainer = styled.div`
     .text-column {
       display: flex;
       flex-direction: column;
-      text-align: center;
+      text-align: start;
       margin: auto;
       max-width: 30rem;
 
@@ -309,21 +435,30 @@ const AboutMeContainer = styled.div`
 
       span {
         padding: 1rem 0;
-        font-size: 1.2rem;
-        font-weight: 500;
+        font-size: 1.05rem;
       }
     }
 
     @media ${MediaQueries.MD} {
-      padding-bottom: 4rem;
+      padding-bottom: 7rem;
     }
 
     @media ${MediaQueries.LG} {
       flex-direction: row;
       align-items: center;
-      padding: 0rem 10rem;
-      padding-bottom: 5rem;
+      padding: 1rem 10rem;
+      padding-bottom: 9rem;
     }
+  }
+
+  @media ${MediaQueries.MD} {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  }
+
+  @media ${MediaQueries.LG} {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
   }
 `;
 
@@ -346,7 +481,7 @@ const RowContainer = styled.div`
       margin: auto;
       flex-direction: row;
       justify-content: space-between;
-      padding: 2rem 4rem;
+      padding: 2rem 8rem;
       align-items: center;
       gap: 2rem;
     }
@@ -358,6 +493,11 @@ const RowContainer = styled.div`
     gap: 1rem;
     text-align: center;
     justify-content: center;
+
+    @media ${MediaQueries.LG} {
+      text-align: start;
+      justify-content: start;
+    }
 
     .live-button {
       background-color: white;
@@ -442,6 +582,7 @@ const Block = styled.div`
   }
 
   @media ${MediaQueries.LG} {
+    text-align: start;
     min-width: 29rem;
     max-width: 33rem;
   }
