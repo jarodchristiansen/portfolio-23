@@ -219,11 +219,11 @@ export default function Home() {
 
       <motion.div
         animate={{
-          y: ["50%", "0%", "-50%", "0%", "50%", "0%"],
+          y: ["50%", "0%", "-50%", "0%", "50%", "0%", "-50%", "0%"],
         }}
         transition={{
           y: {
-            duration: 2,
+            duration: 10,
             repeat: Infinity,
             ease: "easeInOut",
           },
