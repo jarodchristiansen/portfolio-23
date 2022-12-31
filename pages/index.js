@@ -198,8 +198,8 @@ export default function Home() {
           >
             <span>
               My name is Jarod Christiansen, I am a Software Engineer with years
-              of experience in Software Engineering specializing in user
-              interface design and development. The primary programming
+              of experience in software development, specializing in user
+              interface design and implementation. The primary programming
               languages I work with are Javascript (TypeScript), Python, and
               Solidity. The primary libraries/frameworks I have experience with
               are React, NextJS, Apollo (GraphQL), Node, and Express. I am also
@@ -208,13 +208,13 @@ export default function Home() {
             </span>
 
             <span>
-              With years of experience in digital marketing, implementing onsite
-              development for national as well as local SEO campaigns, WCAG 2.2
-              accessibility implementation, and responsive data analysis /
-              visualization, my skillset lends itself to many areas of software
-              engineering. I am passionate about designing and Engineering
-              captivating responsive user experiences as I believe they are the
-              backbone of any well-designed application.
+              With years of experience in digital marketing, implementing
+              on-site optimization for national and local SEO campaigns, WCAG
+              2.2 accessibility implementation, and responsive data analysis /
+              visualization, my skillset lends itself to many areas of
+              application development. I am passionate about designing and
+              engineering captivating responsive user experiences as I believe
+              they are the backbone of any well-designed application.
             </span>
           </motion.div>
         </div>
