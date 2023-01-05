@@ -1,20 +1,18 @@
-import Head from "next/head";
-import styled, { keyframes } from "styled-components";
-import Link from "next/link";
-import Image from "next/image";
-import { MediaQueries } from "../styles/MediaQueries";
-import { useMemo, useRef } from "react";
-import bg from "../public/svgs/wavy-banner.svg";
 import { motion } from "framer-motion";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import { useMemo, useRef } from "react";
 import { FaArrowUp } from "react-icons/fa";
+import styled from "styled-components";
+import { MediaQueries } from "../styles/MediaQueries";
 
 export default function Home() {
   const ProjectBlocks = useMemo(() => {
     const projects = [
       {
         title: "HodlWatch",
-        techStack:
-          "NextJS, Apollo (GraphQL), MongoDB, Next-Auth, Styled-Components, Vercel",
+        techStack: "NextJS, Apollo (GraphQL), MongoDB, Next-Auth, NodeJS",
         details:
           "Web3 data aggregation and indicator site. Allows web3 communities to gain insights into digital assets including financial, social, and on-chain metrics. 12,500+ assets, as well as 20+ indicators.",
         imageSource: "/images/cryptoWatch.png",
@@ -25,26 +23,26 @@ export default function Home() {
 
       {
         title: "Algorithm Visualizer",
-        techStack: "NextJS, Typescript, Styled-Components, Vercel",
+        techStack: "NextJS, Typescript, Styled-Components, NodeJS",
         details:
-          "NextJS application designed to illustrate various sorting algorithms with variable speed to illustrate runtime complexity as well as fun data visualizations with Typescript.",
+          "Web application designed to illustrate various sorting and high runtime algorithms with variable speeds, highlighting runtime complexity via sorting algorithms and recursive functions.",
         imageSource: "/images/algo-viz.png",
         liveUrl: "https://algorithm-visualizer-nextjs.vercel.app/",
         githubUrl: "https://github.com/jarodchristiansen/algorithm-visualizer",
         platform: "Web",
       },
 
-      {
-        title: "React-Native NFT Marketplace",
-        techStack: "React Native, TypeScript, Solidity, IPFS",
-        details:
-          "React Native NFT explorer application that allows users to view their favorite NFT's, learn more about them, as well as place bids on the NFT itself.",
-        imageSource: "/images/react-native-nfts.png",
-        liveUrl: "",
-        githubUrl:
-          "https://github.com/jarodchristiansen/nft-marketplace-react-native",
-        platform: "Mobile",
-      },
+      // {
+      //   title: "React-Native NFT Marketplace",
+      //   techStack: "React Native, TypeScript, Solidity, IPFS",
+      //   details:
+      //     "React Native NFT explorer application allows users to view their favorite NFTs, learn more about them, place bids, and communicate with other likeminded collectors.",
+      //   imageSource: "/images/react-native-nfts.png",
+      //   liveUrl: "",
+      //   githubUrl:
+      //     "https://github.com/jarodchristiansen/nft-marketplace-react-native",
+      //   platform: "Mobile",
+      // },
 
       {
         title: "MoonMarket",
@@ -156,7 +154,7 @@ export default function Home() {
         >
           <h2>
             <span>
-              Hi, My name is
+              Hi, my name is
               <span className="name-text">Jarod Christiansen</span> <br />
               I'm a Software Engineer
             </span>
