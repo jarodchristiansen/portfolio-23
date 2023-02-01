@@ -22,6 +22,17 @@ export default function Home() {
       },
 
       {
+        title: "Solo Digital",
+        techStack: "Next.JS, TypeScript, GraphQL, NoSQL",
+        details:
+          "Reponsive web application for Solo Digital content marketing and development agency. Full CMS/Blog/Portoflio site",
+        imageSource: "/images/solo-digital.png",
+        liveUrl: "https://agency-portfolio-kappa.vercel.app/",
+        githubUrl: "",
+        platform: "Web",
+      },
+
+      {
         title: "Algorithm Visualizer",
         techStack: "NextJS, Typescript, Styled-Components, NodeJS",
         details:
@@ -32,17 +43,17 @@ export default function Home() {
         platform: "Web",
       },
 
-      // {
-      //   title: "React-Native NFT Marketplace",
-      //   techStack: "React Native, TypeScript, Solidity, IPFS",
-      //   details:
-      //     "React Native NFT explorer application allows users to view their favorite NFTs, learn more about them, place bids, and communicate with other likeminded collectors.",
-      //   imageSource: "/images/react-native-nfts.png",
-      //   liveUrl: "",
-      //   githubUrl:
-      //     "https://github.com/jarodchristiansen/nft-marketplace-react-native",
-      //   platform: "Mobile",
-      // },
+      {
+        title: "React-Native NFT Marketplace",
+        techStack: "React Native, TypeScript, Solidity, IPFS",
+        details:
+          "React Native NFT explorer application allows users to view their favorite NFTs, learn more about them, place bids, and communicate with other likeminded collectors.",
+        imageSource: "/images/react-native-nfts.png",
+        liveUrl: "",
+        githubUrl:
+          "https://github.com/jarodchristiansen/nft-marketplace-react-native",
+        platform: "Mobile",
+      },
 
       {
         title: "MoonMarket",
