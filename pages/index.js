@@ -26,7 +26,7 @@ export default function Home() {
         techStack: "Python, Pandas, SkLearn, MatplotLib, Numpy, Keras, Prophet",
         details:
           "Multiple NLP models for sentiment analysis, text generation, and QA. Time Series Forecasting utilizing Prophet Model trained to utilize CoinMarketCapAPI and Numpy. Easily extendible to most various assets with historical data. Expansion of LSTM Neural Network to expand accuracy as well as expansion of time series memory.",
-        imageSource: "/images/Machine_learning.PNG",
+        imageSource: "/images/machineLearning.png",
         liveUrl:
           "https://github.com/jarodchristiansen/Machine-Learning-Deep-Learning",
         githubUrl:
