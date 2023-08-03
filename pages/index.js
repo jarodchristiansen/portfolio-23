@@ -11,13 +11,26 @@ export default function Home() {
   const ProjectBlocks = useMemo(() => {
     const projects = [
       {
-        title: "HodlWatch",
+        title: "Mesh",
         techStack: "NextJS, Apollo (GraphQL), MongoDB, Next-Auth, NodeJS",
         details:
-          "Web3 data aggregation and indicator site. Allows web3 communities to gain insights into digital assets including financial, social, and on-chain metrics. 12,500+ assets, as well as 20+ indicators.",
+          "Web3 data aggregation and indicator site. Allows web3 communities to gain insights into digital assets including financial, social, and on-chain metrics for 12,500+ assets. Users can create accounts, save favorited assets, and explore a wide array of indicators like: Fibonacci Retracement, Bollinger Bands, Rolling Sharpe Ratio, and more.",
         imageSource: "/images/cryptoWatch.png",
         liveUrl: "https://hodl-watch.vercel.app/",
         githubUrl: "https://github.com/jarodchristiansen/hodlWatch",
+        platform: "Web",
+      },
+
+      {
+        title: "NLP/Time Series Forecasting",
+        techStack: "Python, Pandas, SkLearn, MatplotLib, Numpy, Keras, Prophet",
+        details:
+          "Multiple NLP models for sentiment analysis, text generation, and QA. Time Series Forecasting utilizing Prophet Model trained to utilize CoinMarketCapAPI and Numpy. Easily extendible to most various assets with historical data. Expansion of LSTM Neural Network to expand accuracy as well as expansion of time series memory.",
+        imageSource: "/images/machineLearning.png",
+        liveUrl:
+          "https://github.com/jarodchristiansen/Machine-Learning-Deep-Learning",
+        githubUrl:
+          "https://github.com/jarodchristiansen/Machine-Learning-Deep-Learning",
         platform: "Web",
       },
 
@@ -449,17 +462,18 @@ const AboutMeContainer = styled.div`
     .text-column {
       display: flex;
       flex-direction: column;
-      text-align: start;
+      text-align: center;
       margin: auto;
       max-width: 30rem;
 
       @media ${MediaQueries.LG} {
+        text-align: start;
         max-width: 60%;
       }
 
       span {
         padding: 1rem 0;
-        font-size: 1.05rem;
+        font-size: 1.15rem;
       }
     }
 
